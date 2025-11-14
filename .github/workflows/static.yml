@@ -1,34 +1,87 @@
-name: Deploy static site to GitHub Pages
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
 
-on:
-  push:
-    branches: [ "main" ]
-  workflow_dispatch:
+    <audio id="bg-music" loop>
+        <source src="audio/background.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#hero">HOME</a>
+                <a href="#projects">PROJECTS</a>
+                <a href="#contact">CONTACT</a>
+                <button id="music-toggle" title="Toggle Music"><i class="fas fa-volume-up"></i></button>
+            </nav>
+        </div>
+    </header>
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
+    <section id="hero" class="hero-section text-center">
+        <div class="container">
+            <img src="images/profile.jpg" alt="Profile Picture" class="profile-img">
+            <h1>[Your Name]</h1>
+            <p class="tagline">Creative Designer & Developer | Building digital experiences.</p>
+            <a href="#contact" class="cta-button">Hire Me</a>
+        </div>
+    </section>
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    <section id="featured-project" class="section-padding">
+        <div class="container project-card-lg">
+            <h2>FEATURED WORK</h2>
+            <div class="project-content">
+                <img src="images/project1.png" alt="Project 1 Screenshot">
+                <p>A cutting-edge solution built with [Tech Stack].</p>
+                <a href="#" class="project-link">VIEW LIVE DEMO</a>
+            </div>
+        </div>
+    </section>
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+    <section id="skills" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">SKILLS & EXPERTISE</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>Front-End Development</h4>
+                    <ul>
+                        <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                        <li>React / Vue / Angular</li>
+                    </ul>
+                </div>
+                <div class="skill-card highlight-card">
+                    <h4>Web Design & UX</h4>
+                    <p>Figma, Adobe XD, Responsive Design, Accessibility.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Back-End Development</h4>
+                    <ul>
+                        <li>Node.js, Python, PHP</li>
+                        <li>Databases (SQL/NoSQL)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      - name: Upload static site
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: "."
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            <p>&copy; 2025 [Your Name]. All Rights Reserved.</p>
+        </div>
+    </footer>
 
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+    <script src="js/main.js"></script>
+</body>
+</html>
 
